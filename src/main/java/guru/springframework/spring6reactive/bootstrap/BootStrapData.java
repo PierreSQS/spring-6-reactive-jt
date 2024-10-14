@@ -5,6 +5,7 @@ import guru.springframework.spring6reactive.domain.Customer;
 import guru.springframework.spring6reactive.repositories.BeerRepository;
 import guru.springframework.spring6reactive.repositories.CustomerRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -12,8 +13,9 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
- * Created by jt, Spring Framework Guru.
+ *  Modified by Pierrot, on 2024-10-14.
  */
+@Slf4j
 @RequiredArgsConstructor
 @Component
 public class BootStrapData implements CommandLineRunner {
@@ -22,16 +24,12 @@ public class BootStrapData implements CommandLineRunner {
     private final CustomerRepository customerRepository;
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         loadBeerData();
         loadCustomerData();
-        beerRepository.count().subscribe(count -> {
-            System.out.println("Beer Count is: " + count);
-        });
+        beerRepository.count().subscribe(count -> log.info("Beer Count is: {}", count));
 
-        customerRepository.count().subscribe(count -> {
-            System.out.println("Customer Count is: " + count);
-        });
+        customerRepository.count().subscribe(count -> log.info("Customer Count is: {}", count));
     }
 
     private void loadCustomerData() {

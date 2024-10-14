@@ -13,7 +13,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
- * Created by jt, Spring Framework Guru.
+ *  Modified by Pierrot, on 2024-10-14.
  */
 @RestController
 @RequiredArgsConstructor
