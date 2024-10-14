@@ -28,9 +28,7 @@ public class BeerRepositoryTest {
     @Test
     void saveNewBeer() {
         beerRepository.save(getTestBeer())
-                .subscribe(beer -> {
-                    System.out.println(beer.toString());
-                });
+                .subscribe(beer -> System.out.println(beer.toString()));
     }
 
     public static Beer getTestBeer() {
